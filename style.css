@@ -1,3 +1,13 @@
 body { 
     padding-top: 100px; 
 }
+#cityList{
+
+    list-style-type: none;
+}
+.cityBtn{
+    width: 200px;
+    height: auto;
+    border: white;
+    border-style: solid;
+}
