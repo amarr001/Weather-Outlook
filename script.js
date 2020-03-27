@@ -1,4 +1,3 @@
-
 var cityList = $("#cityList");
 var cityInput = $(".cityInput");
 var input = cityInput.val();
@@ -14,14 +13,9 @@ event.preventDefault();
         var input = cityInput.val();
         cities.push(input);
         cityInput.val("");
-    
 
-        var list = $("<li>")
-        var cityBtn = $("<button>").attr({"class": "btn btn-secondary cityBtn"})
-        cityBtn.text(input);
-        cityList.append(list);
-        list.append(cityBtn);
-    
+        displayCity();
+ 
    
     localStorage.setItem("cities", JSON.stringify(cities));
 
@@ -47,11 +41,32 @@ function renderCities(){
         var list = $("<li>")
         var cityBtn = $("<button>").attr({"class": "btn btn-secondary cityBtn"})
         cityBtn.text(cities[i]);
+        deleteBtn = $("<button>").attr({"class": "btn btn-info deleteBtn"});
+        deleteIcon = $("<i>").attr({"class": "far fa-trash-alt"});
+        deleteBtn.append(deleteIcon);
+        cityBtn.append(deleteBtn);
         cityList.append(list);
         list.append(cityBtn);
-
     }
 
 
 }
+function displayCity(){
+    var list = $("<li>")
+    var cityBtn = $("<button>").attr({"class": "btn btn-secondary cityBtn"})
+    cityBtn.text(input);
+    deleteBtn = $("<button>").attr({"class": "btn btn-info deleteBtn"});
+    deleteIcon = $("<i>").attr({"class": "far fa-trash-alt"});
+    deleteBtn.append(deleteIcon);
 
+    cityList.append(list);
+    cityBtn.append(deleteBtn);
+    list.append(cityBtn);
+}
+
+$(".deleteBtn").on("click", function(){
+
+    $(this).parent().remove();
+    
+    console.log(cities);
+})
