@@ -111,7 +111,7 @@ event.preventDefault();
                "<br>" + "Humidity: " + response.list[24].main.humidity + "%" + "<br>" + "Temperature: " + response.list[24].main.temp + " C" + "</p>");
 
                var iconFour = response.list[32].weather[0].icon;
-               var iconUrlFour = "http://openweathermap.org/img/wn/" + iconFour + ".png";
+               var iconUrlFour = "https://openweathermap.org/img/wn/" + iconFour + ".png";
                $(".dayFour").html("<p>" + moment().add('4', 'days').format('dddd, MMMM Do') + "<br>" + "<img src='" + iconUrlFour + "'>" +
                "<br>" + "Humidity: " + response.list[32].main.humidity + "%" + "<br>" + "Temperature: " + response.list[32].main.temp + " C" + "</p>");
            
