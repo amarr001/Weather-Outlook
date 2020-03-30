@@ -40,31 +40,31 @@ event.preventDefault();
         var APIkey = "580c3816a0776bc60fd5cfc966954bd0";
 
                 if(input === "Adelaide"){
-                var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +
+                var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" +
                 "id=7839644&units=metric&APPID=" + APIkey; //units=metric converts K to Celsius
                 }
                 if(input === "Melbourne"){
-                var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +
+                var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" +
                 "id=7839805&units=metric&APPID=" + APIkey; 
                 }
                 if(input === "Perth"){
-                var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +
+                var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" +
                 "id=2063523&units=metric&APPID=" + APIkey; 
                 }
                 if(input === "Brisbane"){
-                    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +
+                    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" +
                     "id=2174003&units=metric&APPID=" + APIkey;
                 }
                 if(input === "Sydney"){
-                    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +
+                    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" +
                     "id=6619279&units=metric&APPID=" + APIkey;
                 }
                 if(input === "Darwin"){
-                    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +
+                    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" +
                     "id=7839402&units=metric&APPID=" + APIkey;
                 }
                 if(input === "Hobart"){
-                    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +
+                    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" +
                     "id=2163355&units=metric&APPID=" + APIkey;
                 }
 
@@ -85,7 +85,7 @@ event.preventDefault();
 
                 var windSpeed = response.list[0].wind.speed;
                 var iconCode = response.list[0].weather[0].icon;
-                var iconUrl = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+                var iconUrl = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
             
 
                $(".cityName").html("<h1>" + response.city.name  + "<img src='" + iconUrl  + "'>" + "<h4>" + currentDate + "</h4>" + "</h1>");
@@ -96,17 +96,17 @@ event.preventDefault();
             // Update info for each day of the week
 
                var iconOne = response.list[8].weather[0].icon;
-               var iconUrlOne = "http://openweathermap.org/img/wn/" + iconOne + ".png";
+               var iconUrlOne = "https://openweathermap.org/img/wn/" + iconOne + ".png";
                $(".dayOne").html("<p>" + moment().add('1', 'days').format('dddd, MMMM Do') + "<br>" + "<img src='" + iconUrlOne + "'>" +
                "<br>" + "Humidity: " + response.list[8].main.humidity + "%" + "<br>" + "Temperature: " + response.list[8].main.temp + " C" + "</p>");
                
                var iconTwo = response.list[16].weather[0].icon;
-               var iconUrlTwo = "http://openweathermap.org/img/wn/" + iconTwo + ".png";
+               var iconUrlTwo = "https://openweathermap.org/img/wn/" + iconTwo + ".png";
                $(".dayTwo").html("<p>" + moment().add('2', 'days').format('dddd, MMMM Do') + "<br>" + "<img src='" + iconUrlTwo + "'>" +
                "<br>" + "Humidity: " + response.list[15].main.humidity + "%" + "<br>" + "Temperature: " + response.list[15].main.temp + " C" + "</p>");
                 
                var iconThree = response.list[24].weather[0].icon;
-               var iconUrlThree = "http://openweathermap.org/img/wn/" + iconThree + ".png";
+               var iconUrlThree = "https://openweathermap.org/img/wn/" + iconThree + ".png";
                $(".dayThree").html("<p>" + moment().add('3', 'days').format('dddd, MMMM Do') + "<br>" + "<img src='" + iconUrlThree + "'>" +
                "<br>" + "Humidity: " + response.list[24].main.humidity + "%" + "<br>" + "Temperature: " + response.list[24].main.temp + " C" + "</p>");
 
