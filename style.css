@@ -1,6 +1,4 @@
-*{
-    box-sizing: border-box;
-}
+
 
 body { 
     padding-top: 100px; 
@@ -23,18 +21,18 @@ body {
     border-style: solid;
     border-width: 0.5px;
     border-radius: 5px;
-    margin: 10px;
+    margin: 15px;
     padding: 10px;
 }
 .forecastDisplay{
-    display: flex;
+    display: inline-flex;
     margin: auto;
-    margin-top: 20px;
     padding: 5px;
     border-style: solid;
     border-width: 0.5px;
     border-radius: 5px;
     background-color: dodgerblue;
     color: floralwhite;
+    align-content: center;
     
 }
