@@ -37,14 +37,37 @@ event.preventDefault();
         
         event.preventDefault();
         cityDisplay.show();
-
+        var APIkey = "580c3816a0776bc60fd5cfc966954bd0";
 
                 if(input === "Adelaide"){
-
-                var APIkey = "580c3816a0776bc60fd5cfc966954bd0";
-
-                 var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +
+                var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +
                 "id=7839644&units=metric&APPID=" + APIkey; //units=metric converts K to Celsius
+                }
+                if(input === "Melbourne"){
+                var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +
+                "id=7839805&units=metric&APPID=" + APIkey; 
+                }
+                if(input === "Perth"){
+                var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +
+                "id=2063523&units=metric&APPID=" + APIkey; 
+                }
+                if(input === "Brisbane"){
+                    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +
+                    "id=2174003&units=metric&APPID=" + APIkey;
+                }
+                if(input === "Sydney"){
+                    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +
+                    "id=6619279&units=metric&APPID=" + APIkey;
+                }
+                if(input === "Darwin"){
+                    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +
+                    "id=7839402&units=metric&APPID=" + APIkey;
+                }
+                if(input === "Hobart"){
+                    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?" +
+                    "id=2163355&units=metric&APPID=" + APIkey;
+                }
+
 
                 $.ajax({
                 url: queryURL,
@@ -52,23 +75,26 @@ event.preventDefault();
             })
 
 
-            // We store all of the retrieved data inside of an object called "response"
+            // Stores all of the retrieved data inside of an object called "response"
             .then(function(response) {
 
                 console.log(queryURL);
                 console.log(response);
+            
+            //Print current weather conditions
 
                 var windSpeed = response.list[0].wind.speed;
                 var iconCode = response.list[0].weather[0].icon;
                 var iconUrl = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
-                
+            
 
                $(".cityName").html("<h1>" + response.city.name  + "<img src='" + iconUrl  + "'>" + "<h4>" + currentDate + "</h4>" + "</h1>");
                $(".Temp").text("Temperature: " + response.list[0].main.temp + " C");
                $(".windSpeed").text("Wind Speed: " + windSpeed + " MPS");
                $(".Humidity").text("Humidity: " + response.list[0].main.humidity +" %");
                 
-          
+            // Update info for each day of the week
+
                var iconOne = response.list[8].weather[0].icon;
                var iconUrlOne = "http://openweathermap.org/img/wn/" + iconOne + ".png";
                $(".dayOne").html("<p>" + moment().add('1', 'days').format('dddd, MMMM Do') + "<br>" + "<img src='" + iconUrlOne + "'>" +
@@ -91,7 +117,7 @@ event.preventDefault();
            
            
             })
-            }
+            
 
         
     });
