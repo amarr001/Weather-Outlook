@@ -79,7 +79,7 @@ event.preventDefault();
             .then(function(response) {
 
 
-                var queryUV = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIkey + "&lat="+ response.city.coord.lat + "&lon=" + response.city.coord.lon;
+                var queryUV = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIkey + "&lat="+ response.city.coord.lat + "&lon=" + response.city.coord.lon;
 
                 $.ajax({
                 url: queryUV,
