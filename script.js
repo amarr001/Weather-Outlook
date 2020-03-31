@@ -78,19 +78,7 @@ event.preventDefault();
             // Stores all of the retrieved data inside of an object called "response"
             .then(function(response) {
 
-
-                var queryUV = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIkey + "&lat="+ response.city.coord.lat + "&lon=" + response.city.coord.lon;
-
-                $.ajax({
-                url: queryUV,
-                method: "GET"
-                })
-
-                .then(function(UVindex){
-                    $(".UVindex").text("UV Index: "+ UVindex.value);
-                })
-
-               
+                
                 console.log(queryURL);
                 console.log(response);
                 
@@ -134,6 +122,33 @@ event.preventDefault();
                $(".dayFour").html("<p>" + moment().add('4', 'days').format('dddd, MMMM Do') + "<br>" + "<img src='" + iconUrlFour + "'>" +
                "<br>" + "Humidity: " + response.list[32].main.humidity + "%" + "<br>" + "Temperature: " + response.list[32].main.temp + " C" + "</p>");
            
+                // Ajax call for UV index
+
+               var queryUV = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIkey + "&lat="+ response.city.coord.lat + "&lon=" + response.city.coord.lon;
+            
+                $.ajax({
+                url: queryUV,
+                method: "GET"
+                })
+
+                .then(function(UVindex){
+                    
+                    $(".UVindex").html("UV Index: " + UVindex.value);
+                    
+                    if(UVindex.value <= "2"){
+                        $(".UVindex").attr("id", "favourable")
+                    }
+                    if(UVindex.value <= "5"){
+                        $(".UVindex").attr("id", "moderate")
+                    }
+                    if(UVindex.value > "5"){
+                        $(".UVindex").attr("id", "high")
+                    }
+                    
+                    
+                    console.log(UVindex.value);
+                    
+                })
            
             })
             

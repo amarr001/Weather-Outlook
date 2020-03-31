@@ -26,7 +26,7 @@ body {
 }
 .forecastDisplay{
     display: inline-flex;
-    margin: auto;
+    margin: 15px;
     padding: 5px;
     border-style: solid;
     border-width: 0.5px;
@@ -35,4 +35,23 @@ body {
     color: floralwhite;
     align-content: center;
     
+}
+#favourable{
+    background-color: green;
+    color: white;
+    border-style: none;
+    
+}
+#moderate{
+    background-color: goldenrod;
+    color: white;
+    border-style: none;
+    
+    
+}
+#high{
+    background-color: red;
+    color: white;
+    border-style: none;
+    width: 120px;
 }
