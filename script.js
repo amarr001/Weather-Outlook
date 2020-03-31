@@ -42,6 +42,7 @@ event.preventDefault();
                 if(input === "Adelaide"){
                 var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" +
                 "id=7839644&units=metric&APPID=" + APIkey; //units=metric converts K to Celsius
+                
                 }
                 if(input === "Melbourne"){
                 var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" +
@@ -68,30 +69,48 @@ event.preventDefault();
                     "id=2163355&units=metric&APPID=" + APIkey;
                 }
 
-
                 $.ajax({
                 url: queryURL,
                 method: "GET"
-            })
+                })
 
 
             // Stores all of the retrieved data inside of an object called "response"
             .then(function(response) {
 
+
+                var queryUV = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIkey + "&lat="+ response.city.coord.lat + "&lon=" + response.city.coord.lon;
+
+                $.ajax({
+                url: queryUV,
+                method: "GET"
+                })
+
+                .then(function(UVindex){
+                    $(".UVindex").text("UV Index: "+ UVindex.value);
+                })
+
+               
                 console.log(queryURL);
                 console.log(response);
+                
+                
+                
             
             //Print current weather conditions
 
-                var windSpeed = response.list[0].wind.speed;
-                var iconCode = response.list[0].weather[0].icon;
+                var windSpeed = response.list[1].wind.speed;
+                var iconCode = response.list[1].weather[0].icon;
                 var iconUrl = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
-            
+
+               
 
                $(".cityName").html("<h1>" + response.city.name  + "<img src='" + iconUrl  + "'>" + "<h4>" + currentDate + "</h4>" + "</h1>");
                $(".Temp").text("Temperature: " + response.list[0].main.temp + " C");
                $(".windSpeed").text("Wind Speed: " + windSpeed + " MPS");
                $(".Humidity").text("Humidity: " + response.list[0].main.humidity +" %");
+               
+              
                 
             // Update info for each day of the week
 
