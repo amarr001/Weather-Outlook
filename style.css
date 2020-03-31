@@ -40,13 +40,13 @@ body {
     background-color: green;
     color: white;
     border-style: none;
-    
+    width: 120px;
 }
 #moderate{
     background-color: goldenrod;
     color: white;
     border-style: none;
-    
+    width: 120px;
     
 }
 #high{
